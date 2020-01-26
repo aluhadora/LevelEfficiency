@@ -1,0 +1,57 @@
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
+export default class AllLevels extends Component {
+  constructor(props) {
+      super(props)
+      // console.log(props)
+      this.state = {
+        levels: [
+          [],
+        ]
+      }
+      this.logChange = this.logChange.bind(this);
+  }
+  componentDidMount() {
+    let self = this;
+    fetch('/efficient')
+      .then(res => res.json())
+      .then(levels => self.setState({ levels: levels }));
+  }
+  logChange(e) {
+        this.setState({[e.target.name]: e.target.value});  
+    }
+  render() {
+    return (
+        <div className="Users container">
+          <h1>Efficient Levels</h1>
+          <table className="table">
+          <thead>
+            <tr>
+              <th>Overlap</th>
+              <th>Difficulty</th>
+              <th>World</th>
+              <th>Level</th>
+              <th>Needed Items</th>
+              <th>Items</th>
+              <th>Characters</th>
+            </tr>
+          </thead>
+          <tbody>
+              {this.state.levels[0].map(member =>
+                <tr key={member.id}>
+                  <td><Link to={"/level/" + member.World + member.Level}>{member.Overlap}</Link></td>
+                  <td>{member.World > 900 ? 'Hard' : 'Normal'}</td>
+                  <td>{member.World % 100 }</td>
+                  <td>{member.Level }</td>
+                  <td>{member.NeededItems}</td>
+                  <td>{member.Items}</td>
+                  <td>{member.Characters}</td>
+                </tr>
+              )}
+          </tbody>
+          </table>
+        </div>
+    );
+  }
+}

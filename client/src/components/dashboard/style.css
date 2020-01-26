@@ -1,0 +1,47 @@
+.element {
+    color: white;
+	text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+}
+
+.requiredMet {
+    color: green !important;
+}
+
+.requiredMissed {
+    color: red !important;
+}
+
+.characterPage {    
+    margin: 1em;
+    background: beige;
+    width: min-content;
+    border-radius: 1em;
+    border: 1px solid black;
+}
+
+.FlexContainer {
+    display: flex;
+    flex-flow: row wrap;
+    /* This aligns items to the end line on main-axis */
+    /* justify-content: flex-end; */
+  }
+
+.levelDisplay {
+    display: flex;
+    background: linear-gradient(45deg, black, transparent);
+    justify-content: space-around;
+}
+
+.appBackground {
+    background-color: darkgrey;
+    position: fixed;
+    top: 0px;
+    height: 100%;
+    right: 0px;
+    left: 0px;
+    z-index: -999;
+}
